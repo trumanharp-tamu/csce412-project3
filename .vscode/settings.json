@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.lsx": "xml",
+        "string": "cpp"
+    }
+}
