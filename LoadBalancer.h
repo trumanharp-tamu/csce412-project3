@@ -1,3 +1,5 @@
+#pragma once
+
 #include "WebServer.h"
 #include "RequestQueue.h"
 #include <vector>
