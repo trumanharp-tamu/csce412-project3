@@ -79,6 +79,7 @@ void Logger::logFinalState(const std::vector<bool>& serverStatus, int queueSize)
     if (logFile.is_open()) {
         logFile << "=== Final Simulation State ===" << std::endl;
         logFile << "Remaining Queue Size: " << queueSize << std::endl;
+        logFile << "Active Servers: " << serverStatus.size() << std::endl;
         logFile << "Server Statuses:" << std::endl;
 
         for (size_t i = 0; i < serverStatus.size(); ++i) {

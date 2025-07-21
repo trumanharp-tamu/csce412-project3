@@ -29,10 +29,10 @@ void LoadBalancer::runCycle() {
     logger.logCycle(totalCycles - cyclesLeft, requestQueue.size());
     bool tryDeallocate = false;
 
-    if (requestQueue.size() > servers.size() * 100) {
+    if (requestQueue.size() > (int)(servers.size() * 100)) {
         servers.push_back(WebServer());
         logger.logServerAllocated(servers.size() - 1);
-    } else if (requestQueue.size() < servers.size() * 50 && servers.size() > 1) {
+    } else if (requestQueue.size() < (int)(servers.size() * 50) && servers.size() > 1) {
         tryDeallocate = true;
     }
 
