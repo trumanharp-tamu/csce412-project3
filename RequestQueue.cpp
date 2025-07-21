@@ -7,3 +7,9 @@ void RequestQueue::fillQueue(int numReqs) {
         queue.push(req);
     }
 }
+
+Request RequestQueue::popRequest() {
+    Request front = queue.front();
+    queue.pop();
+    return front;
+}

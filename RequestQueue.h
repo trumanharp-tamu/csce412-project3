@@ -8,7 +8,7 @@ class RequestQueue {
 public:
     RequestQueue() : queue() {}
     void fillQueue(int numReqs);
-    Request& popRequest(); 
+    Request popRequest(); 
 
     void addRequest (const Request& req) { queue.push(req); }
     void clear() { while (!queue.empty()) queue.pop(); }
