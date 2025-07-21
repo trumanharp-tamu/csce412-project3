@@ -3,6 +3,7 @@
 #include "WebServer.h"
 #include "RequestQueue.h"
 #include <vector>
+#include "Logger.h"
 
 using std::vector;
 
@@ -14,6 +15,7 @@ class LoadBalancer {
 
     vector<WebServer> servers;
     RequestQueue requestQueue;
+    Logger logger;
 
 public:
     LoadBalancer(int servers, int totalCycles, int percentChanceGenerateRequest);

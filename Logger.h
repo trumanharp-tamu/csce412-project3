@@ -16,7 +16,7 @@ public:
 
     void setStartingQueueSize(int size);
     void setEndingQueueSize(int size);
-    void logCycle(int cycle, const std::vector<bool>& serverStatus, int queueSize);
+    void logCycle(int cycle, int queueSize);
     void logAssignedRequest(int serverId, const std::string& ipIn, const std::string& ipOut, int time);
     void logGeneratedRequest(const std::string& ipIn, const std::string& ipOut, int time);
     void logServerAllocated(int serverIndex);
