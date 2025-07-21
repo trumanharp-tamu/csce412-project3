@@ -1,7 +1,7 @@
 #include "LoadBalancer.h"
 
 LoadBalancer::LoadBalancer(int numServers, int totalCycles, int percentChanceGenerateRequest) 
-    : numServers(numServers), totalCycles(totalCycles), percentChanceGenerateRequest(percentChanceGenerateRequest), cyclesLeft(totalCycles), servers(numServers) {
+    : numServers(numServers), totalCycles(totalCycles), cyclesLeft(totalCycles), percentChanceGenerateRequest(percentChanceGenerateRequest), servers(numServers) {
 
     requestQueue.fillQueue(numServers * 100);
     //TODO Log starter queue size
