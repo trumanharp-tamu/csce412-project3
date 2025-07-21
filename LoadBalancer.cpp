@@ -49,7 +49,7 @@ void LoadBalancer::runCycle() {
     std::shuffle(readyServers.begin(), readyServers.end(), std::default_random_engine());
     for (WebServer* server : readyServers) {
         if (!requestQueue.empty()) {
-            Request& req = requestQueue.popRequest();
+            Request req = requestQueue.popRequest();
             server->giveRequest(req);
             //TODO Log request assignment
         }
