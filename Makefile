@@ -2,8 +2,8 @@ COMPILER = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++17
 
 all: app
-app: main.o LoadBalancer.o WebServer.o Request.o RequestQueue.o
-	$(COMPILER) $(CFLAGS) -o app main.o LoadBalancer.o WebServer.o Request.o RequestQueue.o
+app: main.o LoadBalancer.o WebServer.o Request.o RequestQueue.o Logger.o
+	$(COMPILER) $(CFLAGS) -o app main.o LoadBalancer.o WebServer.o Request.o RequestQueue.o Logger.o
 
 
 main.o: main.cpp
@@ -20,6 +20,9 @@ Request.o: Request.cpp Request.h
 
 RequestQueue.o: RequestQueue.cpp RequestQueue.h
 	$(COMPILER) $(CFLAGS) -c RequestQueue.cpp
+
+Logger.o: Logger.cpp Logger.h
+	$(COMPILER) $(CFLAGS) -c Logger.cpp
 
 clean:
 	rm -f app *.o

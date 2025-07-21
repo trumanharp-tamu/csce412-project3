@@ -13,12 +13,16 @@ class LoadBalancer {
     int cyclesLeft;
     int percentChanceGenerateRequest;
 
+    int nextServerId = 0;
+    
+
     vector<WebServer> servers;
     RequestQueue requestQueue;
     Logger logger;
+    
 
 public:
-    LoadBalancer(int servers, int totalCycles, int percentChanceGenerateRequest);
+    LoadBalancer(int servers, int totalCycles, int percentChanceGenerateRequest, bool verboseLogging = false);
     void runCycle();
     void run();
 };
