@@ -6,7 +6,7 @@
 int main() {
     srand(time(0));
 
-    int numServers, totalCycles, percentRequestGeneration;
+    int numServers, totalCycles, percentRequestGeneration, verboseInt;
     bool verboseLogging;
     printf("Enter number of servers: ");
     scanf("%d", &numServers);
@@ -15,8 +15,10 @@ int main() {
     printf("Enter percent chance of generating a request each cycle: ");
     scanf("%d", &percentRequestGeneration);
     printf("Enter 1 for verbose logging, 0 for normal logging: ");
-    scanf("%d", (int*)&verboseLogging);
+    scanf("%d", &verboseInt);
 
+    verboseLogging = (verboseInt == 1);
+    
     LoadBalancer loadBalancer(numServers, totalCycles, percentRequestGeneration, verboseLogging);
     loadBalancer.run();
 

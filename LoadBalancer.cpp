@@ -2,12 +2,11 @@
 #include <algorithm>
 #include <random>
 
-LoadBalancer::LoadBalancer(int numServers, int totalCycles, int percentChanceGenerateRequest, bool verboseLogging) 
-    : numServers(numServers), totalCycles(totalCycles), cyclesLeft(totalCycles), percentChanceGenerateRequest(percentChanceGenerateRequest), servers(numServers), logger("load_balancer.log", MIN_TASK_TIME, MAX_TASK_TIME, MAX_IP_PART, verboseLogging) {
-
+LoadBalancer::LoadBalancer(int numServers, int totalCycles, int percent, bool verboseLogging) 
+    : numServers(numServers), totalCycles(totalCycles), cyclesLeft(totalCycles), percentChanceGenerateRequest(percent), servers(numServers), logger("load_balancer.log", MIN_TASK_TIME, MAX_TASK_TIME, MAX_IP_PART, verboseLogging) {
     requestQueue.fillQueue(numServers * 100);
     logger.setStartingQueueSize(numServers * 100);
-    logger.logStartup(numServers, totalCycles, percentChanceGenerateRequest);
+    logger.logStartup(numServers, totalCycles, percent);
     //TODO log randomness for ip and processing time generation
     //TODO log randomess for request generation
 }
@@ -29,11 +28,11 @@ void  LoadBalancer::run() {
 void LoadBalancer::runCycle() {
     logger.logCycle(totalCycles - cyclesLeft, requestQueue.size());
     bool tryDeallocate = false;
-    
-    if (requestQueue.size() > numServers * 100) {
+
+    if (requestQueue.size() > servers.size() * 100) {
         servers.push_back(WebServer());
         logger.logServerAllocated(servers.size() - 1);
-    } else if (requestQueue.size() < numServers * 50 && servers.size() > 1) {
+    } else if (requestQueue.size() < servers.size() * 50 && servers.size() > 1) {
         tryDeallocate = true;
     }
 
