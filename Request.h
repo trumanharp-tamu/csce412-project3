@@ -6,6 +6,7 @@ using std::string;
 
 const int MIN_TASK_TIME = 1;
 const int MAX_TASK_TIME = 50;
+const int MAX_IP_PART = 255;
 
 struct Request {
     string ipIn;
@@ -17,4 +18,5 @@ struct Request {
 
     static string genRandomIp();
     static int genRandomProcessingTime();
+    static Request genRandomRequest();
 };

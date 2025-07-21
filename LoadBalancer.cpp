@@ -5,6 +5,8 @@ LoadBalancer::LoadBalancer(int numServers, int totalCycles, int percentChanceGen
 
     requestQueue.fillQueue(numServers * 100);
     //TODO Log starter queue size
+    //TODO log randomness for ip and processing time generation
+    //TODO log randomess for request generation
 }
 
 void  LoadBalancer::run() {
