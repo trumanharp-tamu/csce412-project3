@@ -16,4 +16,5 @@ class LoadBalancer {
 public:
     LoadBalancer(int servers, int totalCycles, int percentChanceGenerateRequest);
     void runCycle();
+    void run();
 };
